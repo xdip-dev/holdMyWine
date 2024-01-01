@@ -29,7 +29,13 @@ describe("WineStock contract", function () {
     async function deployFixtureWithUpdatedPriceAndStock() {
         const data = await deployTokenFixture();
         await data.holdMyWine.connect(data.owner).mint(data.wineStockAddress, 1, 10, "0x");
-        await data.wineStock.connect(data.owner).updateBatchWinePrice([1, 2, 3], [10, 20, 10]);
+        ethers.parseEther("10");
+        await data.wineStock
+            .connect(data.owner)
+            .updateBatchWinePrice(
+                [1, 2, 3],
+                [ethers.parseEther("10"), ethers.parseEther("20"), ethers.parseEther("10")]
+            );
         return { ...data };
     }
 

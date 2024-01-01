@@ -68,7 +68,7 @@ contract WineStock is IERC1155Receiver, OwnableUpgradeable, UUPSUpgradeable {
             "HoldMyWine: incorrect wine id or wine price not set"
         );
         require(
-            msg.value == (price * amount) * 1 ether,
+            msg.value == (price * amount),
             "Not enough found sent to process the transaction"
         );
         ERC1155(mainContractERC1155).safeTransferFrom(
